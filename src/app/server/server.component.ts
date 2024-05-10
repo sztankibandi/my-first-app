@@ -8,6 +8,10 @@ export class ServerComponent {
   serverID: number = 10;
   serverStatus: string = 'offline';
 
+  constructor() {
+    /*this.serverStatus = Math.random()*/
+  }
+
   getServerStatus() {
     return this.serverStatus;
   }

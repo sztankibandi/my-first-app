@@ -9,7 +9,7 @@ import {Component} from "@angular/core";
     `
     p {
       padding: 20px;
-      background-color: mistyrose;
+      background-color: rosybrown;
       border: 1px solid red;
     }
     `
