@@ -1,5 +1,5 @@
 export class ServersService {
-  private servers: {id: number, name: string, status: string}[] = [
+  private servers = [
     {
       id: 1,
       name: 'Productionserver',
@@ -17,17 +17,16 @@ export class ServersService {
     }
   ];
 
-  getServers(): {id: number, name: string, status: string}[] {
+  getServers() {
     return this.servers;
   }
 
-  getServer(id: number): {id: number, name: string, status: string} {
+  getServer(id: number) {
     const server = this.servers.find(
       (s) => {
         return s.id === id;
       }
     );
-
     return server;
   }
 
@@ -37,7 +36,6 @@ export class ServersService {
         return s.id === id;
       }
     );
-
     if (server) {
       server.name = serverInfo.name;
       server.status = serverInfo.status;
