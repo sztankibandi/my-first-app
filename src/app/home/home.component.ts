@@ -9,7 +9,6 @@ import { map, filter } from 'rxjs/operators';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-
   private firstObsSubscription: Subscription;
 
   constructor() {
@@ -34,7 +33,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     });
 
 
-    this.firstObsSubscription = customIntervalObservable.pipe(filter((data: number)=> {
+    this.firstObsSubscription = customIntervalObservable.pipe(filter((data: number) => {
       return data > 0;
     }), map((data: number) => {
       return 'Round: ' + (data + 1);
