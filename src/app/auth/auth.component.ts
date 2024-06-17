@@ -6,6 +6,7 @@ import {Observable, Subscription} from 'rxjs';
 import { AuthService, AuthResponseData } from './auth.service';
 import {AlertComponent} from "../shared/alert/alert.component";
 import {PlaceHolderDirective} from "../shared/placeholder/placeholder.directive";
+import {DataStorageService} from "../shared/data-storage.service";
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +20,8 @@ export class AuthComponent implements OnDestroy{
 
   private closeSubscription: Subscription;
 
-  constructor(private authService: AuthService, private router: Router, private componentFactoryresolver: ComponentFactoryResolver) {}
+  constructor(private authService: AuthService, private router: Router, private componentFactoryresolver: ComponentFactoryResolver,
+              private dataStorageService: DataStorageService) {}
 
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
@@ -38,6 +40,7 @@ export class AuthComponent implements OnDestroy{
 
     if (this.isLoginMode) {
       authObs = this.authService.login(email, password);
+
     } else {
       authObs = this.authService.signup(email, password);
     }
@@ -47,6 +50,7 @@ export class AuthComponent implements OnDestroy{
         console.log(resData);
         this.isLoading = false;
         this.router.navigate(['/recipes']);
+        this.dataStorageService.fetchRecipes().subscribe();
       },
       errorMessage => {
         console.log(errorMessage);
