@@ -1,8 +1,8 @@
-import { Component} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Store} from "@ngrx/store";
-import {selectCount, selectDoubleCount} from "../store/counter.selector";
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 
+import { selectCount, selectDoubleCount } from '../store/counter.selectors';
 
 @Component({
   selector: 'app-counter-output',
@@ -10,7 +10,6 @@ import {selectCount, selectDoubleCount} from "../store/counter.selector";
   styleUrls: ['./counter-output.component.css'],
 })
 export class CounterOutputComponent {
-
   count$: Observable<number>;
   doubleCount$: Observable<number>;
 
@@ -18,6 +17,4 @@ export class CounterOutputComponent {
     this.count$ = store.select(selectCount);
     this.doubleCount$ = store.select(selectDoubleCount);
   }
-
-
 }
