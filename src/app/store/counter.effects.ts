@@ -11,13 +11,13 @@ export class CounterEffects {
   loadCount = createEffect(() =>
     this.actions$.pipe(
       ofType(init),
-      switchMap(() => {
-        const storedCounter = localStorage.getItem('count');
-        if (storedCounter) {
-          return of(set({ value: +storedCounter }));
-        }
-        return of(set({value: 0}));
-      })
+      // switchMap(() => {
+      //   const storedCounter = localStorage.getItem('count');
+      //   if (storedCounter) {
+      //     return of(set({ value: +storedCounter }));
+      //   }
+      //   return of(set({value: 0}));
+      // })
     )
   );
 
